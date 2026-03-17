@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>PBZ Početna Screen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #1a1a1a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .card-shadow {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      }
+      .fab-shadow {
+        box-shadow: 0 4px 12px rgba(235, 92, 16, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Device Container -->
+    <div
+      class="relative w-full max-w-[450px] h-[100dvh] max-h-[850px] bg-[#f4f4f6] overflow-hidden shadow-2xl flex flex-col"
+    >
+      <!-- Dynamic Header -->
+      <div
+        id="main-header"
+        class="absolute top-0 left-0 right-0 bg-[#eb5c10] z-40 transition-all duration-300 ease-in-out h-[64px] rounded-b-none flex flex-col overflow-hidden shadow-sm"
+      >
+        <div class="flex justify-between items-center px-5 h-[64px] shrink-0">
+          <button class="text-white p-1">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <h1 class="text-white text-[17px] font-semibold tracking-wide">
+            Početna
+          </h1>
+          <button class="relative text-white p-1">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <div
+              class="absolute top-1 right-1 w-[10px] h-[10px] bg-white rounded-full border-[2px] border-[#eb5c10]"
+            ></div>
+          </button>
+        </div>
+
+        <div
+          id="header-summary"
+          class="px-5 pt-2 pb-5 flex flex-col opacity-0 translate-y-4 transition-all duration-300 ease-in-out pointer-events-none"
+        >
+          <p
+            class="text-white/80 text-[12px] font-medium tracking-wide mb-[10px]"
+          >
+            HR8423400093206007118
+          </p>
+          <div class="flex items-start gap-[10px]">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="1.5"
+              class="opacity-90 mt-[2px]"
+            >
+              <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+              <path d="M2 10h20"></path>
+            </svg>
+            <div class="flex flex-col">
+              <span
+                class="text-white font-bold text-[18px] leading-none balance-display"
+                >*****</span
+              >
+              <span class="text-white/80 text-[12px] mt-[4px]"
+                >Stanje računa</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scrollable Content Area -->
+      <div
+        id="scroll-area"
+        class="h-full overflow-y-auto no-scrollbar pt-[64px] pb-[40px] relative z-10"
+      >
+        <!-- Welcome Section -->
+        <div class="px-5 pt-6 pb-5 flex items-center gap-4">
+          <div
+            class="w-[52px] h-[52px] rounded-[14px] bg-gray-300 overflow-hidden shrink-0 shadow-sm border border-gray-200"
+          >
+            <img
+              id="user-photo"
+              src=""
+              alt="Profile"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[#777777] text-[15px] tracking-tight"
+              >Dobro došli natrag,</span
+            >
+            <span
+              id="user-name"
+              class="text-[#111111] text-[18px] font-bold tracking-tight mt-[-2px]"
+            ></span>
+          </div>
+        </div>
+
+        <!-- Main Account Card -->
+        <div
+          class="mx-4 bg-white rounded-[16px] card-shadow overflow-hidden relative border-t-[4px] border-[#eb5c10] mb-8"
+        >
+          <div class="p-5 pb-4">
+            <div class="flex justify-between items-start mb-1">
+              <h2
+                class="text-[#111111] text-[15px] font-semibold tracking-tight"
+              >
+                Tekući račun u eurima
+              </h2>
+              <!-- EDIT TRIGGER -->
+              <button id="edit-trigger-btn" class="text-gray-400 p-1 mt-[-4px]">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-2 mb-5">
+              <p class="text-[#666666] text-[13px] tracking-wide">
+                HR84 2340 0093 2060 0711 8
+              </p>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#eb5c10"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="opacity-70"
+              >
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+            </div>
+
+            <!-- Balance Toggle -->
+            <div class="flex justify-between items-end mb-1">
+              <div>
+                <h3
+                  class="text-[#111111] text-[20px] font-bold leading-none mb-1 balance-display"
+                >
+                  *****
+                </h3>
+                <p class="text-[12px] text-[#777777]">Raspoloživ iznos</p>
+              </div>
+              <button
+                id="toggle-visibility-btn"
+                class="p-2 text-[#eb5c10] bg-orange-50 rounded-full shrink-0"
+              >
+                <svg
+                  id="eye-icon"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"
+                  ></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </button>
+            </div>
+
+            <div
+              class="pt-4 mt-4 border-t border-gray-100 flex items-start gap-2 hidden"
+              id="extra-balance-info"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#777777"
+                stroke-width="2"
+                class="mt-[2px]"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <div>
+                <p class="text-[12px] text-[#111111] font-medium">
+                  Preostalo prekoračenje
+                </p>
+                <p class="text-[12px] text-[#777777] mb-1">0,00 EUR</p>
+                <p class="text-[10px] text-[#a0a0a0]">(odobrenje 0,00 EUR)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transactions Section -->
+        <div class="px-5 mb-4">
+          <div class="flex items-center gap-2 mb-6">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#666666"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="21" y1="10" x2="3" y2="10"></line>
+              <line x1="21" y1="6" x2="3" y2="6"></line>
+              <line x1="21" y1="14" x2="3" y2="14"></line>
+              <line x1="21" y1="18" x2="3" y2="18"></line>
+            </svg>
+            <h2 class="text-[#111111] text-[17px] font-bold tracking-tight">
+              Zadnje transakcije
+            </h2>
+          </div>
+
+          <!-- Dynamic Transactions Container -->
+          <div class="flex flex-col gap-6" id="transactions-container"></div>
+        </div>
+
+        <div class="px-5 mb-10">
+          <button
+            class="text-[#eb5c10] text-[13px] font-semibold tracking-wide flex items-center gap-1 uppercase hover:opacity-80 transition-opacity"
+          >
+            Pregledaj sve
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Bottom Payment Section -->
+        <div class="px-5 pb-[120px]">
+          <h2 class="text-[#111111] text-[18px] font-bold tracking-tight mb-5">
+            Plati omiljenim primateljima
+          </h2>
+          <div
+            class="bg-white rounded-[16px] p-[18px] card-shadow flex items-center gap-4 mb-5 border border-gray-100"
+          >
+            <div
+              class="w-[48px] h-[48px] rounded-full border-[1.5px] border-gray-200 flex items-center justify-center shrink-0"
+            >
+              <div
+                class="w-[30px] h-[30px] rounded-full bg-orange-50 flex items-center justify-center"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#eb5c10"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <span
+                class="text-[#111111] text-[15px] font-semibold leading-tight mb-1"
+                >Bad Homburger Inkasso<br />GmbH</span
+              >
+              <span class="text-[#777777] text-[12px] tracking-wide"
+                >DE62500500000014700000</span
+              >
+            </div>
+          </div>
+          <div class="flex justify-center items-center gap-1.5 mb-10">
+            <div class="w-4 h-[5px] bg-[#eb5c10] rounded-full"></div>
+            <div class="w-[5px] h-[5px] bg-gray-300 rounded-full"></div>
+            <div class="w-[5px] h-[5px] bg-gray-300 rounded-full"></div>
+          </div>
+          <div class="flex flex-col gap-8">
+            <div class="relative border-b border-gray-300 pb-2">
+              <input
+                type="text"
+                placeholder="Iznos"
+                class="w-full bg-transparent text-[16px] text-[#111111] placeholder-gray-400 outline-none"
+              />
+              <span
+                class="absolute right-0 top-0 text-[13px] text-[#777777] font-medium"
+                >EUR</span
+              >
+            </div>
+            <div class="relative border-b border-gray-300 pb-2">
+              <input
+                type="text"
+                placeholder="Opis plaćanja *"
+                class="w-full bg-transparent text-[16px] text-[#111111] placeholder-gray-400 outline-none"
+              />
+            </div>
+            <p class="text-[11px] text-[#777777] mt-[-16px]">
+              * obavezna polja
+            </p>
+            <div class="flex gap-4 mt-2">
+              <button
+                class="flex-1 py-3 bg-[#e5e5e5] text-[#777777] font-semibold text-[14px] rounded-full"
+              >
+                Odustani
+              </button>
+              <button
+                class="flex-1 py-3 bg-[#eb5c10] text-white font-semibold text-[14px] rounded-full opacity-50"
+              >
+                Nastavi
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Action Buttons -->
+      <div class="absolute bottom-[30px] right-[20px] flex flex-col gap-3 z-50">
+        <button
+          class="w-[42px] h-[42px] bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-md border border-gray-200 self-end transition-transform active:scale-95"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#666666"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+            ></path>
+          </svg>
+        </button>
+        <button
+          class="w-[50px] h-[50px] bg-[#eb5c10] rounded-full flex items-center justify-center fab-shadow text-white transition-transform active:scale-95"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="9" y1="21" x2="9" y2="9"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- EDIT MODAL (Hidden by default, styled completely separately) -->
+      <div
+        id="edit-modal"
+        class="absolute inset-0 z-[9999] bg-black/60 hidden flex-col items-center justify-center p-4"
+      >
+        <div
+          class="bg-white w-full max-w-[400px] h-[90%] rounded-[16px] overflow-hidden flex flex-col shadow-2xl"
+        >
+          <div
+            class="p-4 bg-[#eb5c10] text-white flex justify-between items-center shrink-0"
+          >
+            <h2 class="font-bold text-[16px]">Uredi Podatke (Edit Details)</h2>
+            <button
+              id="close-modal-btn"
+              class="font-bold text-[24px] leading-none"
+            >
+              &times;
+            </button>
+          </div>
+
+          <div
+            class="p-4 overflow-y-auto flex-grow flex flex-col gap-4 no-scrollbar"
+          >
+            <!-- Global Info -->
+            <div>
+              <label class="block text-[12px] font-bold text-gray-500 mb-1"
+                >Name</label
+              >
+              <input
+                type="text"
+                id="edit-name"
+                class="w-full border border-gray-300 rounded p-2 text-[14px] outline-none focus:border-[#eb5c10]"
+              />
+            </div>
+
+            <!-- Custom Local Image Uploader -->
+            <div>
+              <label class="block text-[12px] font-bold text-gray-500 mb-1"
+                >Profile Photo (Upload)</label
+              >
+              <input
+                type="file"
+                id="edit-photo-file"
+                accept="image/*"
+                class="w-full border border-gray-300 rounded p-1.5 text-[13px] outline-none"
+              />
+              <p class="text-[10px] text-gray-400 mt-1">
+                Leave empty to keep current photo.
+              </p>
+            </div>
+
+            <div>
+              <label class="block text-[12px] font-bold text-gray-500 mb-1"
+                >Balance (e.g. 2,66 EUR)</label
+              >
+              <input
+                type="text"
+                id="edit-balance"
+                class="w-full border border-gray-300 rounded p-2 text-[14px] outline-none focus:border-[#eb5c10]"
+              />
+            </div>
+
+            <hr class="my-2 border-gray-200" />
+            <h3 class="font-bold text-[14px] text-[#eb5c10]">Transactions</h3>
+
+            <!-- Transactions Injection Point -->
+            <div
+              id="modal-transactions-container"
+              class="flex flex-col gap-5"
+            ></div>
+
+            <!-- Add Transaction Button -->
+            <button
+              type="button"
+              onclick="addTx()"
+              class="w-full border-2 border-dashed border-gray-300 text-gray-500 py-2 rounded-lg text-[13px] font-bold hover:border-[#eb5c10] hover:text-[#eb5c10] transition-colors mt-2 mb-4"
+            >
+              + Add Transaction
+            </button>
+          </div>
+
+          <div class="p-4 border-t border-gray-200 shrink-0 flex gap-3">
+            <button
+              id="save-modal-btn"
+              class="flex-1 bg-[#eb5c10] text-white py-3 rounded-full font-semibold text-[14px]"
+            >
+              Spremi (Save)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logic -->
+    <script>
+      // 1. Data State & Local Storage Logic
+      // Note: We use actual newlines (\n) now instead of <br /> so editing in the textarea is clean.
+      const defaultData = {
+        name: "ANDREA NAĐ",
+        photo: "https://i.pravatar.cc/150?img=47",
+        balance: "2,66 EUR",
+        transactions: [
+          {
+            day: "16",
+            month: "ožu",
+            year: "2026",
+            desc: "Ostalo",
+            name: "UPLATA NA RAČUN",
+            amount: "3,87 EUR",
+            isReceived: true,
+          },
+          {
+            day: "16",
+            month: "ožu",
+            year: "2026",
+            desc: "Naplaćene naknade\nNaknada On-line bankarstvo -\ninstant i kreditni transfer na račun u\ndrugoj banci u RH u eurima",
+            name: "",
+            amount: "0,33 EUR",
+            isReceived: false,
+          },
+          {
+            day: "16",
+            month: "ožu",
+            year: "2026",
+            desc: "Plaćanje putem direktnih kanala",
+            name: "RAČUN ZA SIJEČANJ 2026",
+            amount: "20,11 EUR",
+            isReceived: false,
+          },
+          {
+            day: "16",
+            month: "ožu",
+            year: "2026",
+            desc: "Naplaćena naknada\nNaknada za plaćanje izravnim\nterećenjem Suglasnost broj\nOS12210310R048032879",
+            name: "",
+            amount: "0,40 EUR",
+            isReceived: false,
+          },
+        ],
+      };
+
+      let appState =
+        JSON.parse(localStorage.getItem("pbz_data")) || defaultData;
+      let tempState = null; // Used during editing
+
+      let isBalanceVisible = false;
+      let actualBalance = appState.balance;
+      const hiddenBalance = "*****";
+
+      function renderApp() {
+        document.getElementById("user-name").textContent = appState.name;
+        document.getElementById("user-photo").src = appState.photo;
+
+        actualBalance = appState.balance;
+        const balanceDisplays = document.querySelectorAll(".balance-display");
+        balanceDisplays.forEach((el) => {
+          el.textContent = isBalanceVisible ? actualBalance : hiddenBalance;
+        });
+
+        const txContainer = document.getElementById("transactions-container");
+        txContainer.innerHTML = "";
+
+        appState.transactions.forEach((tx, index) => {
+          const isLast = index === appState.transactions.length - 1;
+          const colorClass = tx.isReceived
+            ? "text-[#147a4f]"
+            : "text-[#111111]";
+          const sign = tx.isReceived ? "+" : "-";
+          const cleanAmount = tx.amount.replace(/^[+-]\s*/, "");
+          const formattedAmount = `${sign} ${cleanAmount}`;
+
+          // Convert literal \n back to <br /> just for the visual display
+          const displayDesc = tx.desc.replace(/\n/g, "<br />");
+          const nameHtml = tx.name
+            ? `<span class="text-[#111111] text-[13px] font-medium leading-snug mb-2 uppercase tracking-wide">${tx.name}</span>`
+            : "";
+          const amountMargin = tx.name ? "" : "mt-1";
+
+          txContainer.innerHTML += `
+            <div class="flex items-start gap-4 ${isLast ? "border-b border-gray-200 pb-5" : ""}">
+              <div class="flex flex-col items-center w-[40px] shrink-0 mt-[2px]">
+                <span class="text-[#111111] text-[18px] font-bold leading-none">${tx.day}</span>
+                <span class="text-[#666666] text-[12px]">${tx.month}</span>
+                <span class="text-[#a0a0a0] text-[10px] mt-1">${tx.year}</span>
+              </div>
+              <div class="flex flex-col flex-grow">
+                <span class="text-[#777777] text-[12px] mb-1 leading-tight">${displayDesc}</span>
+                ${nameHtml}
+                <span class="${colorClass} text-[14px] font-bold ${amountMargin}">${formattedAmount}</span>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      // 2. Edit Modal Logic (Dynamic Add/Delete)
+      function syncInputsToTempState() {
+        if (!tempState) return;
+        tempState.name = document.getElementById("edit-name").value;
+        tempState.balance = document.getElementById("edit-balance").value;
+
+        tempState.transactions.forEach((tx, i) => {
+          tx.day = document.getElementById(`tx-day-${i}`).value;
+          tx.month = document.getElementById(`tx-month-${i}`).value;
+          tx.year = document.getElementById(`tx-year-${i}`).value;
+          tx.name = document.getElementById(`tx-name-${i}`).value;
+          tx.desc = document.getElementById(`tx-desc-${i}`).value;
+          tx.amount = document.getElementById(`tx-amount-${i}`).value;
+          tx.isReceived =
+            document.getElementById(`tx-type-${i}`).value === "received";
+        });
+      }
+
+      function buildModalTransactions() {
+        const container = document.getElementById(
+          "modal-transactions-container",
+        );
+        container.innerHTML = "";
+        tempState.transactions.forEach((tx, i) => {
+          // Escape quotes so they don't break the input values
+          const safeName = tx.name.replace(/"/g, "&quot;");
+
+          container.innerHTML += `
+            <div class="border border-gray-200 p-3 rounded-lg flex flex-col gap-3 relative bg-gray-50/50 shadow-sm mt-2">
+              <span class="absolute -top-2.5 left-3 bg-white px-1 text-[10px] font-bold text-gray-500 border border-gray-200 rounded">Tr. ${i + 1}</span>
+              <button type="button" onclick="deleteTx(${i})" class="absolute -top-2.5 right-2 text-red-500 text-[10px] font-bold bg-white px-2 py-0.5 rounded border border-red-200 hover:bg-red-50">Delete</button>
+              
+              <div class="flex gap-2 mt-2">
+                <input type="text" id="tx-day-${i}" value="${tx.day}" placeholder="Day (e.g. 16)" class="w-1/3 border rounded p-1.5 text-[13px] outline-none focus:border-[#eb5c10]">
+                <input type="text" id="tx-month-${i}" value="${tx.month}" placeholder="Month (e.g. ožu)" class="w-1/3 border rounded p-1.5 text-[13px] outline-none focus:border-[#eb5c10]">
+                <input type="text" id="tx-year-${i}" value="${tx.year}" placeholder="Year (e.g. 2026)" class="w-1/3 border rounded p-1.5 text-[13px] outline-none focus:border-[#eb5c10]">
+              </div>
+              
+              <div>
+                <input type="text" id="tx-name-${i}" value="${safeName}" placeholder="Name of transaction (e.g. John Smith, Vinted)" class="w-full border rounded p-1.5 text-[13px] outline-none focus:border-[#eb5c10]">
+              </div>
+
+              <div>
+                <textarea id="tx-desc-${i}" placeholder="Category/Description" class="w-full border rounded p-1.5 text-[13px] outline-none focus:border-[#eb5c10] resize-none" rows="3">${tx.desc}</textarea>
+              </div>
+              
+              <div class="flex gap-2">
+                <input type="text" id="tx-amount-${i}" value="${tx.amount}" placeholder="Amount (e.g. 15,00 EUR)" class="w-1/2 border rounded p-1.5 text-[13px] outline-none focus:border-[#eb5c10]">
+                <select id="tx-type-${i}" class="w-1/2 border rounded p-1.5 text-[13px] outline-none focus:border-[#eb5c10] bg-white">
+                  <option value="received" ${tx.isReceived ? "selected" : ""}>[ Received ]</option>
+                  <option value="sent" ${!tx.isReceived ? "selected" : ""}>[ Sent/Spent ]</option>
+                </select>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      window.deleteTx = function (index) {
+        syncInputsToTempState();
+        tempState.transactions.splice(index, 1);
+        buildModalTransactions();
+      };
+
+      window.addTx = function () {
+        syncInputsToTempState();
+        tempState.transactions.push({
+          day: "01",
+          month: "sij",
+          year: "2026",
+          desc: "",
+          name: "",
+          amount: "0,00 EUR",
+          isReceived: false,
+        });
+        buildModalTransactions();
+
+        // Scroll to bottom of modal
+        const modalScroll = document.querySelector(
+          "#edit-modal .overflow-y-auto",
+        );
+        setTimeout(() => {
+          modalScroll.scrollTop = modalScroll.scrollHeight;
+        }, 50);
+      };
+
+      // Handle Image Upload and Resizing (to prevent localStorage limits)
+      document
+        .getElementById("edit-photo-file")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (!file) return;
+
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            const img = new Image();
+            img.onload = function () {
+              // Resize image to max 250px wide to save space
+              const canvas = document.createElement("canvas");
+              const MAX_WIDTH = 250;
+              const scaleSize = MAX_WIDTH / img.width;
+              canvas.width = MAX_WIDTH;
+              canvas.height = img.height * scaleSize;
+
+              const ctx = canvas.getContext("2d");
+              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+              // Save compressed base64 to tempState
+              tempState.photo = canvas.toDataURL("image/jpeg", 0.8);
+            };
+            img.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        });
+
+      // Open Modal
+      document
+        .getElementById("edit-trigger-btn")
+        .addEventListener("click", () => {
+          tempState = JSON.parse(JSON.stringify(appState)); // Create deep copy for editing
+          document.getElementById("edit-name").value = tempState.name;
+          document.getElementById("edit-balance").value = tempState.balance;
+          document.getElementById("edit-photo-file").value = ""; // Reset file input
+
+          buildModalTransactions();
+          document.getElementById("edit-modal").classList.remove("hidden");
+          document.getElementById("edit-modal").classList.add("flex");
+        });
+
+      // Close Modal
+      document
+        .getElementById("close-modal-btn")
+        .addEventListener("click", () => {
+          document.getElementById("edit-modal").classList.add("hidden");
+          document.getElementById("edit-modal").classList.remove("flex");
+          tempState = null;
+        });
+
+      // Save Modal
+      document
+        .getElementById("save-modal-btn")
+        .addEventListener("click", () => {
+          syncInputsToTempState();
+          appState = JSON.parse(JSON.stringify(tempState));
+
+          try {
+            localStorage.setItem("pbz_data", JSON.stringify(appState));
+          } catch (err) {
+            alert(
+              "Error saving data. If you uploaded a photo, it might be too large.",
+            );
+          }
+
+          renderApp();
+          document.getElementById("edit-modal").classList.add("hidden");
+          document.getElementById("edit-modal").classList.remove("flex");
+        });
+
+      // 3. Scroll Animation Logic
+      const scrollArea = document.getElementById("scroll-area");
+      const header = document.getElementById("main-header");
+      const headerSummary = document.getElementById("header-summary");
+
+      scrollArea.addEventListener("scroll", () => {
+        const scrollThreshold = 80;
+        if (scrollArea.scrollTop > scrollThreshold) {
+          header.classList.replace("h-[64px]", "h-[148px]");
+          header.classList.replace("rounded-b-none", "rounded-b-[24px]");
+          headerSummary.classList.remove(
+            "opacity-0",
+            "translate-y-4",
+            "pointer-events-none",
+          );
+          headerSummary.classList.add("opacity-100", "translate-y-0");
+        } else {
+          header.classList.replace("h-[148px]", "h-[64px]");
+          header.classList.replace("rounded-b-[24px]", "rounded-b-none");
+          headerSummary.classList.add(
+            "opacity-0",
+            "translate-y-4",
+            "pointer-events-none",
+          );
+          headerSummary.classList.remove("opacity-100", "translate-y-0");
+        }
+      });
+
+      // 4. Visibility Toggle Logic (Eye Icon)
+      const toggleBtn = document.getElementById("toggle-visibility-btn");
+      const eyeIcon = document.getElementById("eye-icon");
+      const extraBalanceInfo = document.getElementById("extra-balance-info");
+
+      const svgEyeOpen = `
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+        `;
+      const svgEyeClosed = `
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+        `;
+
+      toggleBtn.addEventListener("click", () => {
+        isBalanceVisible = !isBalanceVisible;
+        const balanceDisplays = document.querySelectorAll(".balance-display");
+        balanceDisplays.forEach((el) => {
+          el.textContent = isBalanceVisible ? actualBalance : hiddenBalance;
+        });
+
+        eyeIcon.innerHTML = isBalanceVisible ? svgEyeOpen : svgEyeClosed;
+
+        if (isBalanceVisible) {
+          extraBalanceInfo.classList.remove("hidden");
+        } else {
+          extraBalanceInfo.classList.add("hidden");
+        }
+      });
+
+      // Init on load
+      renderApp();
+    </script>
+  </body>
+</html>

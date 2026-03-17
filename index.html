@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>PBZ App Screen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Prevents all scrolling on the page */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #e5e5e5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Device Container - Fixed height, no scrolling inside -->
+    <div
+      class="relative w-full max-w-[450px] h-[100dvh] max-h-[850px] bg-gray-100 overflow-hidden shadow-2xl bg-black"
+    >
+      <!-- Background Image with Grayscale Filter -->
+      <div
+        class="absolute inset-0 bg-cover bg-center grayscale"
+        style="background-image: url(&quot;asset/home.webp&quot;)"
+      ></div>
+
+      <!-- Top Header Gradient (Ensures logo visibility) -->
+      <div
+        class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white via-white/80 to-transparent z-0"
+      ></div>
+
+      <!-- Header -->
+      <div
+        class="absolute top-0 left-0 right-0 p-5 flex justify-between items-start z-10"
+      >
+        <!-- Updated Logo Path -->
+        <img src="asset/pbz.png" class="h-[26px] mt-1" alt="PBZ Logo" />
+
+        <!-- Language Button -->
+        <button
+          class="w-[36px] h-[36px] rounded-full border border-gray-300 flex items-center justify-center bg-transparent backdrop-blur-sm"
+        >
+          <span class="text-[11px] font-bold text-[#333333]">HR</span>
+        </button>
+      </div>
+
+      <!-- Main Login Card -->
+      <div
+        class="absolute top-[125px] left-[16px] right-[16px] bg-white rounded-md shadow-[0_4px_20px_rgb(0,0,0,0.15)] overflow-hidden z-20"
+      >
+        <!-- Left Orange Accent Line -->
+        <div class="absolute left-0 top-0 bottom-0 w-[5px] bg-[#eb5c10]"></div>
+
+        <div class="px-6 py-6">
+          <!-- Greeting and Menu Icon -->
+          <div class="flex justify-between items-start mb-5">
+            <h2 class="text-[22px] font-bold text-[#2a2a2a] tracking-tight">
+              Dobro jutro,
+            </h2>
+            <button class="text-gray-400 mt-1">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Forgot PIN Link -->
+          <p
+            class="text-[13px] text-[#4a4a4a] mb-10 cursor-pointer font-medium"
+          >
+            Zaboravili ste PIN?
+          </p>
+
+          <!-- Avatar and Login Button -->
+          <div class="flex justify-between items-center mt-2">
+            <!-- User Avatar -->
+            <div
+              class="w-[52px] h-[52px] rounded-full bg-[#f6f6f6] border border-gray-200 flex items-center justify-center overflow-hidden shrink-0"
+            >
+              <svg viewBox="0 0 24 24" fill="none" class="w-10 h-10 mt-[8px]">
+                <!-- Head -->
+                <path
+                  d="M12 11C13.6569 11 15 9.65685 15 8C15 6.34315 13.6569 5 12 5C10.3431 5 9 6.34315 9 8C9 9.65685 10.3431 11 12 11Z"
+                  stroke="#9CA3AF"
+                  stroke-width="1.2"
+                />
+                <!-- Shoulders -->
+                <path
+                  d="M5.5 21C5.5 17.5 8 15.5 12 15.5C16 15.5 18.5 17.5 18.5 21"
+                  stroke="#9CA3AF"
+                  stroke-width="1.2"
+                />
+                <!-- Collar & Tie details -->
+                <path
+                  d="M10.5 15.5L12 18L13.5 15.5"
+                  stroke="#9CA3AF"
+                  stroke-width="1.2"
+                />
+                <path d="M12 18V21" stroke="#9CA3AF" stroke-width="1.2" />
+              </svg>
+            </div>
+
+            <!-- Primary Action Button -->
+            <a href="pin.html"
+              ><button
+                class="bg-[#eb5c10] text-white text-[13px] font-bold py-[12px] px-[26px] rounded-full tracking-wider shrink-0 shadow-sm"
+              >
+                PRIJAVA
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Indicators -->
+      <div
+        class="absolute top-[355px] left-0 right-0 flex justify-center space-x-[6px] z-20"
+      >
+        <div class="w-[5px] h-[5px] rounded-full bg-[#eb5c10]"></div>
+        <div
+          class="w-[5px] h-[5px] rounded-full bg-white opacity-90 shadow-sm"
+        ></div>
+      </div>
+
+      <!-- Bottom Navigation Bar - Exactly matching the image provided -->
+      <div
+        class="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] pt-3 pb-8 px-2 z-30 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]"
+      >
+        <!-- Exact tiny top chevron/drag handle -->
+        <div class="flex justify-center mb-4">
+          <svg
+            width="14"
+            height="8"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#a0a0a0"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 15L12 9l-6 6" />
+          </svg>
+        </div>
+
+        <div class="flex justify-between items-end px-4">
+          <!-- Exact Icon 1: #withPAY (Coins + Lightning) -->
+          <div class="flex flex-col items-center w-[30%] cursor-pointer group">
+            <svg viewBox="0 0 24 24" fill="none" class="w-8 h-8 mb-[6px]">
+              <!-- Coin Stack -->
+              <ellipse
+                cx="8"
+                cy="8"
+                rx="4"
+                ry="1.5"
+                stroke="#777777"
+                stroke-width="1.2"
+                class="group-hover:stroke-[#eb5c10] transition-colors"
+              />
+              <path
+                d="M4 8v3c0 .8 1.8 1.5 4 1.5s4-.7 4-1.5V8"
+                stroke="#777777"
+                stroke-width="1.2"
+                class="group-hover:stroke-[#eb5c10] transition-colors"
+              />
+              <path
+                d="M4 11v3c0 .8 1.8 1.5 4 1.5s4-.7 4-1.5v-3"
+                stroke="#777777"
+                stroke-width="1.2"
+                class="group-hover:stroke-[#eb5c10] transition-colors"
+              />
+              <!-- Lightning Bolt -->
+              <path
+                d="M15 13.5l-2.5 4.5h3.5l-1.5 4.5 4.5-6h-3.5z"
+                fill="#777777"
+                class="group-hover:fill-[#eb5c10] transition-colors"
+              />
+            </svg>
+            <span
+              class="text-[10px] text-[#777777] font-medium tracking-tight group-hover:text-[#eb5c10] transition-colors"
+              >#withPAY</span
+            >
+          </div>
+
+          <!-- Exact Icon 2: #withSAVE (Jar with S/$) -->
+          <div class="flex flex-col items-center w-[30%] cursor-pointer group">
+            <svg viewBox="0 0 24 24" fill="none" class="w-8 h-8 mb-[6px]">
+              <!-- Jar Cap -->
+              <rect
+                x="8"
+                y="5"
+                width="8"
+                height="2"
+                rx="0.5"
+                stroke="#777777"
+                stroke-width="1.2"
+                class="group-hover:stroke-[#eb5c10] transition-colors"
+              />
+              <!-- Jar Body -->
+              <path
+                d="M9 7v8a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V7"
+                stroke="#777777"
+                stroke-width="1.2"
+                class="group-hover:stroke-[#eb5c10] transition-colors"
+              />
+              <!-- Inner $ symbol -->
+              <path
+                d="M12 9.5v5"
+                stroke="#777777"
+                stroke-width="1"
+                class="group-hover:stroke-[#eb5c10] transition-colors"
+              />
+              <path
+                d="M10.5 11c0-1 3-1 3 0s-3 1-3 2 3 1 3 0"
+                stroke="#777777"
+                stroke-width="1"
+                class="group-hover:stroke-[#eb5c10] transition-colors"
+              />
+            </svg>
+            <span
+              class="text-[10px] text-[#777777] font-medium tracking-tight group-hover:text-[#eb5c10] transition-colors"
+              >#withSAVE</span
+            >
+          </div>
+
+          <!-- Exact Icon 3: #withCASH (Padlock with Lightning) -->
+          <div class="flex flex-col items-center w-[30%] cursor-pointer group">
+            <svg viewBox="0 0 24 24" fill="none" class="w-8 h-8 mb-[6px]">
+              <!-- Lock Shackle -->
+              <path
+                d="M8 10V7a4 4 0 0 1 8 0v3"
+                stroke="#777777"
+                stroke-width="1.2"
+                class="group-hover:stroke-[#eb5c10] transition-colors"
+              />
+              <!-- Lock Body -->
+              <rect
+                x="6"
+                y="10"
+                width="12"
+                height="9"
+                rx="1"
+                stroke="#777777"
+                stroke-width="1.2"
+                class="group-hover:stroke-[#eb5c10] transition-colors"
+              />
+              <!-- Inner Lightning -->
+              <path
+                d="M11 13l-1.5 3h2l-1 2"
+                stroke="#777777"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="group-hover:stroke-[#eb5c10] transition-colors"
+              />
+            </svg>
+            <span
+              class="text-[10px] text-[#777777] font-medium tracking-tight group-hover:text-[#eb5c10] transition-colors"
+              >#withCASH</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

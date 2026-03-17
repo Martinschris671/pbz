@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Unesi svoj PIN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Prevent body scrolling and pull-to-refresh */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #e5e5e5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        touch-action: none;
+      }
+
+      /* Keypad button touch effect */
+      .keypad-btn:active {
+        background-color: #f3f4f6;
+        transform: scale(0.95);
+      }
+      .keypad-btn {
+        transition: all 0.1s ease-out;
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Device Container -->
+    <div
+      class="relative w-full max-w-[450px] h-[100dvh] max-h-[850px] bg-white overflow-hidden shadow-2xl flex flex-col items-center"
+    >
+      <!-- Header Section with exact provided close SVG -->
+      <div class="w-full flex justify-end pt-6 pr-6">
+        <button
+          class="text-[#000] hover:text-gray-600 transition-colors p-2"
+          aria-label="Close"
+          onclick="window.history.back()"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill="currentColor"
+              d="M15.04,15.75C15.1361,15.8372 15.2603,15.8869 15.39,15.89C15.5288,15.8787 15.6577,15.8142 15.75,15.71C15.9418,15.5122 15.9418,15.1978 15.75,15L8.7316,7.9816L15.71,0.97C15.8047,0.8761 15.8579,0.7483 15.8579,0.615C15.8579,0.4817 15.8047,0.3539 15.71,0.26C15.6162,0.1653 15.4884,0.1121 15.355,0.1121C15.2217,0.1121 15.0939,0.1653 15,0.26L8.0121,7.2621L1,0.25C0.898,0.1502 0.7588,0.0977 0.6162,0.1053C0.4737,0.1129 0.3408,0.1799 0.25,0.29C0.0582,0.4878 0.0582,0.8022 0.25,1L7.2724,8.0034L0.25,15.04C0.0582,15.2378 0.0582,15.5522 0.25,15.75C0.3486,15.8395 0.4768,15.8893 0.61,15.89C0.7534,15.8971 0.8938,15.8467 1,15.75L7.9938,8.7229L15.04,15.75Z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Title and PIN Indicators -->
+      <div class="w-full flex flex-col items-center mt-2">
+        <h1 class="text-[14px] font-medium text-[#333333] mb-6 tracking-wide">
+          Unesi svoj PIN
+        </h1>
+
+        <!-- Bigger PIN Input Indicators -->
+        <div
+          class="flex space-x-[12px] h-[22px] items-center"
+          id="pin-indicators"
+        >
+          <div
+            class="w-[20px] h-[20px] rounded-full border-[1.5px] border-[#e0e0e0] bg-transparent transition-all duration-150 pin-dot"
+          ></div>
+          <div
+            class="w-[20px] h-[20px] rounded-full border-[1.5px] border-[#e0e0e0] bg-transparent transition-all duration-150 pin-dot"
+          ></div>
+          <div
+            class="w-[20px] h-[20px] rounded-full border-[1.5px] border-[#e0e0e0] bg-transparent transition-all duration-150 pin-dot"
+          ></div>
+          <div
+            class="w-[20px] h-[20px] rounded-full border-[1.5px] border-[#e0e0e0] bg-transparent transition-all duration-150 pin-dot"
+          ></div>
+          <div
+            class="w-[20px] h-[20px] rounded-full border-[1.5px] border-[#e0e0e0] bg-transparent transition-all duration-150 pin-dot"
+          ></div>
+          <div
+            class="w-[20px] h-[20px] rounded-full border-[1.5px] border-[#e0e0e0] bg-transparent transition-all duration-150 pin-dot"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Spacer -->
+      <div class="flex-grow"></div>
+
+      <!-- Keypad Grid -->
+      <div class="grid grid-cols-3 gap-x-[22px] gap-y-[16px] px-10 mb-10">
+        <!-- Row 1 -->
+        <button
+          onclick="addNumber('4')"
+          class="keypad-btn w-[70px] h-[70px] rounded-full border-[1.5px] border-[#f2f2f2] bg-white flex items-center justify-center text-[26px] font-normal text-[#444444]"
+        >
+          4
+        </button>
+        <button
+          onclick="addNumber('3')"
+          class="keypad-btn w-[70px] h-[70px] rounded-full border-[1.5px] border-[#f2f2f2] bg-white flex items-center justify-center text-[26px] font-normal text-[#444444]"
+        >
+          3
+        </button>
+        <button
+          onclick="addNumber('8')"
+          class="keypad-btn w-[70px] h-[70px] rounded-full border-[1.5px] border-[#f2f2f2] bg-white flex items-center justify-center text-[26px] font-normal text-[#444444]"
+        >
+          8
+        </button>
+
+        <!-- Row 2 -->
+        <button
+          onclick="addNumber('0')"
+          class="keypad-btn w-[70px] h-[70px] rounded-full border-[1.5px] border-[#f2f2f2] bg-white flex items-center justify-center text-[26px] font-normal text-[#444444]"
+        >
+          0
+        </button>
+        <button
+          onclick="addNumber('7')"
+          class="keypad-btn w-[76px] h-[76px] rounded-full border-[1.5px] border-[#f2f2f2] bg-white flex items-center justify-center text-[26px] font-normal text-[#444444]"
+        >
+          7
+        </button>
+        <button
+          onclick="addNumber('5')"
+          class="keypad-btn w-[70px] h-[70px] rounded-full border-[1.5px] border-[#f2f2f2] bg-white flex items-center justify-center text-[26px] font-normal text-[#444444]"
+        >
+          5
+        </button>
+
+        <!-- Row 3 -->
+        <button
+          onclick="addNumber('6')"
+          class="keypad-btn w-[70px] h-[70px] rounded-full border-[1.5px] border-[#f2f2f2] bg-white flex items-center justify-center text-[26px] font-normal text-[#444444]"
+        >
+          6
+        </button>
+        <button
+          onclick="addNumber('2')"
+          class="keypad-btn w-[70px] h-[70px] rounded-full border-[1.5px] border-[#f2f2f2] bg-white flex items-center justify-center text-[26px] font-normal text-[#444444]"
+        >
+          2
+        </button>
+        <button
+          onclick="addNumber('9')"
+          class="keypad-btn w-[70px] h-[70px] rounded-full border-[1.5px] border-[#f2f2f2] bg-white flex items-center justify-center text-[26px] font-normal text-[#444444]"
+        >
+          9
+        </button>
+
+        <!-- Row 4 -->
+        <div></div>
+        <!-- Empty space -->
+        <button
+          onclick="addNumber('1')"
+          class="keypad-btn w-[70px] h-[70px] rounded-full border-[1.5px] border-[#f2f2f2] bg-white flex items-center justify-center text-[26px] font-normal text-[#444444]"
+        >
+          1
+        </button>
+        <button
+          onclick="removeNumber()"
+          class="keypad-btn w-[70px] h-[70px] rounded-full border-[1.5px] border-[#f2f2f2] bg-white flex items-center justify-center text-[#444444]"
+        >
+          <svg
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+            <line x1="18" y1="9" x2="12" y2="15"></line>
+            <line x1="12" y1="9" x2="18" y2="15"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Bottom Action Area -->
+      <div class="w-full px-12 pb-[50px]">
+        <button
+          id="ok-btn"
+          onclick="submitPin()"
+          class="w-full py-[14px] bg-[#f2f2f2] text-[#c0c0c0] rounded-[24px] font-semibold tracking-wider text-[13px] transition-all duration-200"
+          disabled
+        >
+          OK
+        </button>
+      </div>
+    </div>
+
+    <!-- JavaScript for Functionality -->
+    <script>
+      const MAX_PIN = 6;
+      let currentPin = "";
+      const dots = document.querySelectorAll(".pin-dot");
+      const okBtn = document.getElementById("ok-btn");
+
+      // Logic to update the UI based on entered PIN
+      function updateUI() {
+        // Update the dot indicators with bright orange when active
+        dots.forEach((dot, index) => {
+          if (index < currentPin.length) {
+            // Filled dot (Orange)
+            dot.classList.add("bg-[#eb5c10]", "border-[#eb5c10]");
+            dot.classList.remove("border-[#e0e0e0]", "bg-transparent");
+          } else {
+            // Empty dot
+            dot.classList.remove("bg-[#eb5c10]", "border-[#eb5c10]");
+            dot.classList.add("border-[#e0e0e0]", "bg-transparent");
+          }
+        });
+
+        // Update OK button state
+        if (currentPin.length === MAX_PIN) {
+          okBtn.disabled = false;
+          // Active styling (Orange)
+          okBtn.classList.remove("bg-[#f2f2f2]", "text-[#c0c0c0]");
+          okBtn.classList.add(
+            "bg-[#eb5c10]",
+            "text-white",
+            "shadow-md",
+            "active:bg-[#d4500c]",
+          );
+        } else {
+          okBtn.disabled = true;
+          // Disabled styling (matches original image)
+          okBtn.classList.add("bg-[#f2f2f2]", "text-[#c0c0c0]");
+          okBtn.classList.remove(
+            "bg-[#eb5c10]",
+            "text-white",
+            "shadow-md",
+            "active:bg-[#d4500c]",
+          );
+        }
+      }
+
+      function addNumber(num) {
+        if (currentPin.length < MAX_PIN) {
+          currentPin += num;
+          updateUI();
+        }
+      }
+
+      function removeNumber() {
+        if (currentPin.length > 0) {
+          currentPin = currentPin.slice(0, -1);
+          updateUI();
+        }
+      }
+
+      // Submits and redirects home
+      function submitPin() {
+        if (currentPin.length === MAX_PIN) {
+          window.location.href = "home.html";
+        }
+      }
+
+      // Keyboard support for desktop testing
+      document.addEventListener("keydown", (e) => {
+        if (e.key >= "0" && e.key <= "9") {
+          addNumber(e.key);
+        } else if (e.key === "Backspace") {
+          removeNumber();
+        } else if (e.key === "Enter" && currentPin.length === MAX_PIN) {
+          submitPin();
+        }
+      });
+    </script>
+  </body>
+</html>
